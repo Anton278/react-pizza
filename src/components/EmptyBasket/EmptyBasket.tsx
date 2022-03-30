@@ -1,7 +1,10 @@
 import icon from "./icon.png";
 import "./EmptyBasket.scss";
+import { useNavigate } from "react-router-dom";
 
 const EmptyBasket = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="empty-basket">
             <div className="empty-basket__title">
@@ -44,7 +47,9 @@ const EmptyBasket = () => {
                 <img src={icon} alt="icon" className="empty-basket__img"></img>
             </div>
 
-            <button className="empty-basket__btn">Вернуться назад</button>
+            <button className="empty-basket__btn" onClick={() => navigate("/")}>
+                Вернуться назад
+            </button>
         </div>
     );
 };

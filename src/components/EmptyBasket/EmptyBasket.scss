@@ -41,5 +41,8 @@
         line-height: 19px;
         letter-spacing: 0.015rem;
         color: #ffffff;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
