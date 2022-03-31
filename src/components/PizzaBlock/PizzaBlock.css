@@ -1,0 +1,112 @@
+.main__pizza-block {
+    margin-right: 35px;
+}
+.main__pizza-block:last-of-type {
+    margin-right: 0;
+}
+
+/*  */
+.pizza-block__img-wrapp {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+}
+.pizza-block__img {
+    width: 100%;
+    height: 100%;
+}
+.pizza-block__name {
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: 0.01rem;
+    text-align: center;
+    margin-top: 11px;
+    margin-bottom: 22px;
+}
+.pizza-block__options {
+    background-color: #f3f3f3;
+    padding: 7px 5px;
+}
+.pizza-block__option {
+    display: flex;
+    align-items: center;
+}
+.pizza-block__option:first-of-type {
+    margin-bottom: 7px;
+}
+
+.pizza-block__item {
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #2c2c2c;
+    line-height: 17px;
+    letter-spacing: 0.015rem;
+    margin-right: 6px;
+    padding: 7px 0;
+    flex-grow: 1;
+    text-align: center;
+}
+.pizza-block__item:hover {
+    cursor: pointer;
+}
+.pizza-block__item:last-of-type {
+    margin-right: 0;
+}
+.pizza-block__item_active {
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+}
+.pizza-block__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.pizza-block__price {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 27px;
+    letter-spacing: 0.015rem;
+}
+.pizza-block__btn {
+    border-radius: 30px;
+    border: 1px solid #eb5a1e;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    font-weight: 700;
+    line-height: 19px;
+    color: #eb5a1e;
+    font-size: 0.8rem;
+}
+.pizza-block__btn:hover {
+    background-color: #fe5f1e;
+    border: 1px solid #fe5f1e;
+    color: #fff;
+}
+.pizza-block__btn:hover > svg > path {
+    fill: #fff;
+}
+.pizza-block__btn:hover > .pizza-block__count {
+    background-color: #fff;
+    color: #eb5a1e;
+}
+.pizza-block__btn > svg {
+    margin-right: 8px;
+}
+.pizza-block__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #eb5a1e;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.65rem;
+    line-height: 16px;
+}

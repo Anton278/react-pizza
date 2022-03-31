@@ -1,5 +1,5 @@
-import cheeseChickenPizza from "./cheese-chicken-pizza.svg";
 import BasketItem from "../BasketItem";
+import { BasketItemType } from "../../App";
 import "./Basket.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,22 @@ const Basket = ({ basket, setBasket }: any) => {
             setBasket([]);
         }
     };
+
+    const getTotalPrice = (): number => {
+        let totalPrice: number = 0;
+        basket.forEach((pizza: BasketItemType) => {
+            totalPrice += pizza.amount * pizza.priceForOne;
+        });
+        return totalPrice;
+    };
+    const getTotalAmount = (): number => {
+        let totalAmount: number = 0;
+        basket.forEach((pizza: BasketItemType) => {
+            totalAmount += pizza.amount;
+        });
+        return totalAmount;
+    };
+
     return (
         <main className="basket">
             <div className="basket__header">
@@ -90,25 +106,23 @@ const Basket = ({ basket, setBasket }: any) => {
                     Очистить корзину
                 </div>
             </div>
-            {/* {basket.map((pizza: any) => {
-                <BasketItem
-                    name={name}
-                    option1={option1}
-                    option2={option2}
-                    amount={amount}
-                    price={price}
-                />;
-            })} */}
+            {basket.map((pizza: any) => (
+                <BasketItem {...pizza} setBasket={setBasket} />
+            ))}
             <div className="row basket__row"></div>
             <div className="basket__footer">
                 <div className="basket__col">
                     <div className="basket__total-amount-wrapp">
-                        Всего пицц:
-                        <span className="basket__total-amount"> 3 шт.</span>
+                        Всего пицц:&nbsp;
+                        <span className="basket__total-amount">
+                            {getTotalAmount()} шт.
+                        </span>
                     </div>
                     <div className="basket__total-price-wrapp">
-                        Сумма заказа:
-                        <span className="basket__total-price"> 900 ₽</span>
+                        Сумма заказа:&nbsp;
+                        <span className="basket__total-price">
+                            {getTotalPrice()} ₴
+                        </span>
                     </div>
                 </div>
                 <div className="basket__col">

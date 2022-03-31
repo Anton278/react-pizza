@@ -1,11 +1,11 @@
 import pizzaIcon from "./pizza.svg";
 import "./Header.css";
-import { BasketItem } from "../../App";
+import { BasketItemType } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 type HeaderProps = {
     showBasket: boolean;
-    basket?: Array<BasketItem>;
+    basket?: Array<BasketItemType>;
 };
 const Header = ({ showBasket, basket }: HeaderProps) => {
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Header = ({ showBasket, basket }: HeaderProps) => {
     const getTotalPrice = (): number | undefined => {
         if (Array.isArray(basket)) {
             let totalPrice: number = 0;
-            basket.forEach((pizza: BasketItem) => {
+            basket.forEach((pizza: BasketItemType) => {
                 totalPrice += pizza.amount * pizza.priceForOne;
             });
             return totalPrice;
@@ -22,7 +22,7 @@ const Header = ({ showBasket, basket }: HeaderProps) => {
     const getTotalAmount = (): number | undefined => {
         if (Array.isArray(basket)) {
             let totalAmount: number = 0;
-            basket.forEach((pizza: BasketItem) => {
+            basket.forEach((pizza: BasketItemType) => {
                 totalAmount += pizza.amount;
             });
             return totalAmount;
