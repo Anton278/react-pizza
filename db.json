@@ -1,0 +1,84 @@
+{
+    "pizza": [
+        {
+            "name": "Чизбургер-пицца",
+            "price": {
+                "thin dough": {
+                    "26cm": 200,
+                    "30cm": 250,
+                    "40cm": 350
+                },
+                "traditionalDough": {
+                    "26cm": 220,
+                    "30cm": 270,
+                    "40cm": 370
+                }
+            },
+            "img": "/images/pizza/cheeseburger.png",
+            "category": ["Мясные"],
+            "id": 1
+        },
+        {
+            "name": "Сырная",
+            "price": {
+                "thin dough": {
+                    "26cm": 225,
+                    "30cm": 275,
+                    "40cm": 375
+                },
+                "traditionalDough": {
+                    "26cm": 245,
+                    "30cm": 295,
+                    "40cm": 395
+                }
+            },
+            "img": "/images/pizza/cheese.png",
+            "category": ["Вегетарианская"],
+            "id": 2
+        },
+        {
+            "name": "Креветки по-азиатски",
+            "price": {
+                "thin dough": {
+                    "26cm": 150,
+                    "30cm": 200,
+                    "40cm": 300
+                },
+                "traditionalDough": {
+                    "26cm": 170,
+                    "30cm": 220,
+                    "40cm": 320
+                }
+            },
+            "img": "/images/pizza/asian-shrimp.png",
+            "category": ["Мясные", "Гриль", "Острые"],
+            "id": 3
+        },
+        {
+            "name": "Сырный цыпленок",
+            "price": {
+                "thin dough": {
+                    "26cm": 180,
+                    "30cm": 230,
+                    "40cm": 330
+                },
+                "traditionalDough": {
+                    "26cm": 200,
+                    "30cm": 250,
+                    "40cm": 350
+                }
+            },
+            "img": "/images/pizza/cheese-chicken.png",
+            "category": ["Мясные", "Острые"],
+            "id": 4
+        }
+    ],
+    "categories": [
+        "Все",
+        "Мясные",
+        "Вегетарианская",
+        "Гриль",
+        "Острые",
+        "Закрытые"
+    ]
+}
