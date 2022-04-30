@@ -3,7 +3,7 @@
         {
             "name": "Чизбургер-пицца",
             "price": {
-                "thin dough": {
+                "thinDough": {
                     "26cm": 200,
                     "30cm": 250,
                     "40cm": 350
@@ -21,7 +21,7 @@
         {
             "name": "Сырная",
             "price": {
-                "thin dough": {
+                "thinDough": {
                     "26cm": 225,
                     "30cm": 275,
                     "40cm": 375
@@ -39,7 +39,7 @@
         {
             "name": "Креветки по-азиатски",
             "price": {
-                "thin dough": {
+                "thinDough": {
                     "26cm": 150,
                     "30cm": 200,
                     "40cm": 300
@@ -57,7 +57,7 @@
         {
             "name": "Сырный цыпленок",
             "price": {
-                "thin dough": {
+                "thinDough": {
                     "26cm": 180,
                     "30cm": 230,
                     "40cm": 330
