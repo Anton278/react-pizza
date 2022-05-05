@@ -15,7 +15,7 @@
                 }
             },
             "img": "/images/pizza/cheeseburger.png",
-            "category": ["Мясные"],
+            "category": ["Все", "Мясные"],
             "id": 1
         },
         {
@@ -33,7 +33,7 @@
                 }
             },
             "img": "/images/pizza/cheese.png",
-            "category": ["Вегетарианская"],
+            "category": ["Все", "Вегетарианская"],
             "id": 2
         },
         {
@@ -51,7 +51,7 @@
                 }
             },
             "img": "/images/pizza/asian-shrimp.png",
-            "category": ["Мясные", "Гриль", "Острые"],
+            "category": ["Все", "Мясные", "Гриль", "Острые"],
             "id": 3
         },
         {
@@ -69,7 +69,7 @@
                 }
             },
             "img": "/images/pizza/cheese-chicken.png",
-            "category": ["Мясные", "Острые"],
+            "category": ["Все", "Мясные", "Острые"],
             "id": 4
         }
     ],
