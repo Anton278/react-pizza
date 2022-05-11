@@ -1,10 +1,15 @@
 nav {
     margin: 40px 50px 40px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .nav__categories {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 13px;
 }
 .nav__category {
     padding: 15px 25px;
@@ -29,7 +34,7 @@ nav {
     color: #fff;
 }
 
-.nav__filter {
+.nav__sort {
     display: flex;
     font-weight: 700;
     line-height: 17px;
@@ -38,20 +43,18 @@ nav {
     font-size: 0.7rem;
 }
 
-.select {
+.custom-select {
     position: relative;
 }
-.select__header {
+.custom-select__header {
     font-size: 0.7rem;
     line-height: 17px;
     letter-spacing: 0.015rem;
     color: #fe5f1e;
     text-decoration: underline dotted;
-}
-.select__header:hover {
     cursor: pointer;
 }
-.select__body {
+.custom-select__body {
     position: absolute;
     top: 22px;
     right: 0;
@@ -60,16 +63,37 @@ nav {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     background-color: #fff;
 }
-.select__item {
+.custom-select__item {
     padding: 10px 14px;
-}
-.select__item:hover {
-    background: rgba(254, 95, 30, 0.05);
     cursor: pointer;
 }
-.select__item_active {
+.custom-select__item:hover {
+    background: rgba(254, 95, 30, 0.05);
+}
+.custom-select__item_active {
     font-weight: 700;
     line-height: 17px;
     letter-spacing: 0.015rem;
     color: #fe5f1e;
+}
+
+@media (max-width: 1200px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .nav__categories {
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 700px) {
+    nav {
+        margin: 40px 30px;
+    }
+}
+@media (max-width: 330px) {
+    nav {
+        margin: 30px 20px;
+    }
 }

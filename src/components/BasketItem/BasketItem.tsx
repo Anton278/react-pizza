@@ -1,85 +1,31 @@
 import "./BasketItem.scss";
-import { BasketItemType } from "../../App";
+import { IBasketItem } from "../../assets/types";
+import { useDispatch } from "react-redux";
+import {
+    ADD_ITEM_AMOUNT_IN_BASKET,
+    DECREASE_ITEM_AMOUNT_IN_BASKET,
+    DELETE_ITEM,
+} from "../../actions";
+import remove from "./remove.svg";
+import add from "./add.svg";
+import deleteImg from "./delete.svg";
 
-type BasketItemProps = {
-    name: string;
-    img: string;
-    doughType: string;
-    doughSize: string;
-    priceForOne: number;
-    amount: number;
-    setBasket: React.Dispatch<React.SetStateAction<Array<BasketItemType>>>;
-};
-
-const BasketItem = (props: BasketItemProps) => {
-    const { name, img, doughType, doughSize, amount, priceForOne, setBasket } =
-        props;
-
-    const reduceAmountFromBasket = () => {
-        setBasket((oldBasket: Array<BasketItemType>) => {
-            if (amount === 1) {
-                return oldBasket.filter((pizza: BasketItemType) => {
-                    if (
-                        pizza.name === name &&
-                        pizza.doughSize === doughSize &&
-                        pizza.doughType === doughType
-                    ) {
-                        return false;
-                    } else {
-                        return true;
-                    }
-                });
-            }
-            return oldBasket.map((pizza: BasketItemType) => {
-                if (
-                    pizza.name === name &&
-                    pizza.doughSize === doughSize &&
-                    pizza.doughType === doughType
-                ) {
-                    return { ...pizza, amount: pizza.amount - 1 };
-                } else {
-                    return pizza;
-                }
-            });
-        });
-    };
-    const addAmountToBasket = () => {
-        setBasket((oldBasket: Array<BasketItemType>) => {
-            return oldBasket.map((pizza: BasketItemType) => {
-                if (
-                    pizza.name === name &&
-                    pizza.doughSize === doughSize &&
-                    pizza.doughType === doughType
-                ) {
-                    return { ...pizza, amount: pizza.amount + 1 };
-                } else {
-                    return pizza;
-                }
-            });
-        });
-    };
-    const removeFromBasket = () => {
-        setBasket((oldBasket: Array<BasketItemType>) => {
-            return oldBasket.filter((pizza: BasketItemType) => {
-                if (
-                    pizza.name === name &&
-                    pizza.doughSize === doughSize &&
-                    pizza.doughType === doughType
-                ) {
-                    return false;
-                } else {
-                    return true;
-                }
-            });
-        });
-    };
+const BasketItem = (props: IBasketItem) => {
+    const { name, img, doughType, doughSize, amount, price, id } = props;
+    const dispatch = useDispatch();
 
     return (
         <>
             <div className="row basket__row"></div>
             <div className="basket__item">
                 <div className="basket__img-wrapp">
-                    <img src={img} alt={name} className="basket__img"></img>
+                    <img
+                        src={img}
+                        alt={name}
+                        className="basket__img"
+                        width={80}
+                        height={80}
+                    />
                 </div>
                 <div className="basket__text">
                     <div className="basket__name">{name}</div>
@@ -88,76 +34,58 @@ const BasketItem = (props: BasketItemProps) => {
                     </div>
                 </div>
                 <div className="basket__amount-wrapp">
-                    <svg
-                        onClick={reduceAmountFromBasket}
-                        className="basket__decrease-btn"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <circle
-                            cx="16"
-                            cy="16"
-                            r="15"
-                            fill="white"
-                            stroke="#FE5F1E"
-                            stroke-width="2"
-                        />
-                        <path
-                            d="M15.0402 15.04H19.8402C20.3704 15.04 20.8002 15.4698 20.8002 16C20.8002 16.5302 20.3704 16.96 19.8402 16.96H15.0402H12.1602C11.63 16.96 11.2002 16.5302 11.2002 16C11.2002 15.4698 11.63 15.04 12.1602 15.04H15.0402Z"
-                            fill="#FE5F1E"
-                        />
-                    </svg>
+                    <img
+                        src={remove}
+                        alt="remove-button"
+                        width={32}
+                        height={32}
+                        onClick={() =>
+                            dispatch({
+                                type: DECREASE_ITEM_AMOUNT_IN_BASKET,
+                                payload: {
+                                    id: id,
+                                    doughType: doughType,
+                                    doughSize: doughSize,
+                                },
+                            })
+                        }
+                    />
                     <div className="basket__amount">{amount}</div>
-                    <svg
-                        onClick={addAmountToBasket}
-                        className="basket__btn"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <circle
-                            cx="16"
-                            cy="16"
-                            r="15"
-                            fill="white"
-                            stroke="#FE5F1E"
-                            stroke-width="2"
-                        />
-                        <path
-                            d="M19.8402 15.04H16.9602V12.16C16.9602 11.6299 16.5304 11.2 16.0002 11.2C15.47 11.2 15.0402 11.6299 15.0402 12.16V15.04H12.1602C11.63 15.04 11.2002 15.4699 11.2002 16C11.2002 16.5302 11.63 16.96 12.1602 16.96H15.0402V19.84C15.0402 20.3702 15.47 20.8 16.0002 20.8C16.5304 20.8 16.9602 20.3702 16.9602 19.84V16.96H19.8402C20.3704 16.96 20.8002 16.5302 20.8002 16C20.8002 15.4699 20.3704 15.04 19.8402 15.04Z"
-                            fill="#EB5A1E"
-                        />
-                    </svg>
+                    <img
+                        src={add}
+                        alt="add-button"
+                        width={32}
+                        height={32}
+                        onClick={() =>
+                            dispatch({
+                                type: ADD_ITEM_AMOUNT_IN_BASKET,
+                                payload: {
+                                    id: id,
+                                    doughType: doughType,
+                                    doughSize: doughSize,
+                                },
+                            })
+                        }
+                    />
                 </div>
-                <div className="basket__price">{amount * priceForOne}</div>
+                <div className="basket__price">{amount * price} ₴</div>
                 <div className="basket__btn-wrapp">
-                    <svg
-                        onClick={removeFromBasket}
-                        className="basket__btn"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <circle
-                            cx="16"
-                            cy="16"
-                            r="15"
-                            fill="white"
-                            stroke="#D7D7D7"
-                            stroke-width="2"
-                        />
-                        <path
-                            d="M19.7479 17.9557L17.4993 15.7071L19.7479 13.4585C20.1618 13.0446 20.1618 12.3734 19.7479 11.9595C19.334 11.5455 18.6628 11.5455 18.2488 11.9595L16.0002 14.2081L13.7516 11.9595C13.3377 11.5455 12.6665 11.5455 12.2526 11.9595C11.8386 12.3734 11.8386 13.0446 12.2526 13.4585L14.5012 15.7071L12.2526 17.9557C11.8386 18.3696 11.8386 19.0409 12.2526 19.4548C12.6665 19.8687 13.3377 19.8687 13.7516 19.4548L16.0002 17.2062L18.2488 19.4548C18.6628 19.8687 19.334 19.8687 19.7479 19.4548C20.1618 19.0409 20.1618 18.3696 19.7479 17.9557Z"
-                            fill="#D0D0D0"
-                        />
-                    </svg>
+                    <img
+                        src={deleteImg}
+                        alt="delete-button"
+                        width={32}
+                        height={32}
+                        onClick={() =>
+                            dispatch({
+                                type: DELETE_ITEM,
+                                payload: {
+                                    id: id,
+                                    doughType: doughType,
+                                    doughSize: doughSize,
+                                },
+                            })
+                        }
+                    />
                 </div>
             </div>
         </>

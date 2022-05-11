@@ -1,39 +1,39 @@
-import pizzaIcon from "./pizza.svg";
+import icon from "./icon.svg";
 import "./Header.css";
-import { BasketItemType } from "../../App";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { IBasketItem } from "../../assets/types";
 
 type HeaderProps = {
     showBasket: boolean;
-    basket?: Array<BasketItemType>;
 };
-const Header = ({ showBasket, basket }: HeaderProps) => {
-    const navigate = useNavigate();
 
-    const getTotalPrice = (): number | undefined => {
-        if (Array.isArray(basket)) {
-            let totalPrice: number = 0;
-            basket.forEach((pizza: BasketItemType) => {
-                totalPrice += pizza.amount * pizza.priceForOne;
-            });
-            return totalPrice;
-        }
+const Header = ({ showBasket }: HeaderProps) => {
+    const navigate = useNavigate();
+    const basket: Array<IBasketItem> = useSelector(
+        (state: any) => state.basketReducer
+    );
+
+    const getTotalPrice = () => {
+        let totalPrice = 0;
+        basket.forEach((pizza: IBasketItem) => {
+            totalPrice += pizza.price * pizza.amount;
+        });
+        return totalPrice;
     };
-    const getTotalAmount = (): number | undefined => {
-        if (Array.isArray(basket)) {
-            let totalAmount: number = 0;
-            basket.forEach((pizza: BasketItemType) => {
-                totalAmount += pizza.amount;
-            });
-            return totalAmount;
-        }
+    const getTotalAmount = () => {
+        let totalAmount = 0;
+        basket.forEach((pizza: IBasketItem) => {
+            totalAmount += pizza.amount;
+        });
+        return totalAmount;
     };
     return (
         <>
             <header>
                 <div className="header__box">
                     <div className="header__img-wrapp">
-                        <img src={pizzaIcon} alt="pizza" />
+                        <img src={icon} alt="pizza" />
                     </div>
                     <div className="header__text">
                         <div className="header__title">REACT PIZZA</div>

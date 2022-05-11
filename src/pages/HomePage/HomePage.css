@@ -1,0 +1,52 @@
+/*============ nav =============*/
+main {
+    margin-bottom: 96px;
+}
+.main__title {
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 24px;
+    /* text-align: center; */
+    margin-left: 60px;
+    letter-spacing: 0.01em;
+    margin-bottom: 35px;
+}
+.main__pizza-wrapp {
+    padding: 0 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 65px;
+    justify-items: center;
+}
+
+@media (max-width: 1500px) {
+    .main__pizza-wrapp {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 1080px) {
+    .main__pizza-wrapp {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 700px) {
+    .main__pizza-wrapp {
+        padding: 0 30px;
+    }
+    .main__title {
+        margin-left: 30px;
+    }
+}
+@media (max-width: 635px) {
+    .main__pizza-wrapp {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media (max-width: 330px) {
+    .main__pizza-wrapp {
+        padding: 0 20px;
+    }
+    .main__title {
+        margin-left: 20px;
+    }
+}

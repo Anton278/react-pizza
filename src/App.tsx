@@ -1,33 +1,26 @@
-import "./assets/global.scss";
+import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "./components/MainPage";
-import BasketPage from "./components/BasketPage";
-import { useState } from "react";
-
-export type BasketItemType = {
-    name: string;
-    img: string;
-    doughType: string;
-    doughSize: string;
-    priceForOne: number;
-    amount: number;
-};
+import HomePage from "./pages/HomePage";
+import BasketPage from "./pages/BasketPage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getData } from "./asyncActions";
 
 const App = () => {
-    const [basket, setBasket] = useState<Array<BasketItemType>>([]);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getData());
+    }, []);
+
+    const rootEl = document.getElementById("root");
+    rootEl?.addEventListener("click", (e) => {});
+
     return (
         <BrowserRouter>
             <Routes>
-                <Route
-                    path="/"
-                    element={<MainPage basket={basket} setBasket={setBasket} />}
-                />
-                <Route
-                    path="/basket"
-                    element={
-                        <BasketPage basket={basket} setBasket={setBasket} />
-                    }
-                />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/basket" element={<BasketPage />} />
             </Routes>
         </BrowserRouter>
     );

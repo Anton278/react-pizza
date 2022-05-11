@@ -1,7 +1,8 @@
 .empty-basket {
-    margin: 163px auto;
+    margin: 163px auto 0 auto;
     text-align: center;
     max-width: 547px;
+    padding-bottom: 163px;
     & > .empty-basket__title {
         font-weight: 700;
         font-size: 1.6rem;

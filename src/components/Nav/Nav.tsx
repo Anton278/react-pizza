@@ -1,23 +1,50 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./Nav.css";
+import {
+    SET_ACTIVE_CATEGORY,
+    SORT_BY_POPULARITY,
+    SORT_BY_PRICE,
+    SORT_BY_ALPHABET,
+    SET_ACTIVE_SORT,
+} from "../../actions";
 
 const Nav = () => {
-    const [activeCategory, setActiveCategory] = useState<string>("Все");
+    const dispatch = useDispatch();
     const [showSelectBody, setShowSelectBody] = useState<boolean>(false);
-    const [activeFilter, setActiveFilter] = useState<string>("популярности");
-    const categories: Array<string> = [
-        "Все",
-        "Мясные",
-        "Вегетарианская",
-        "Гриль",
-        "Острые",
-        "Закрытые",
-    ];
-    const filters: Array<string> = ["популярности", "по цене", "по алфавиту"];
+
+    const categories: Array<string> = useSelector(
+        (state: any) => state.categoriesReducer.categories
+    );
+    const activeCategory: string = useSelector(
+        (state: any) => state.appReducer.activeCategory
+    );
+    const activeSort: string = useSelector(
+        (state: any) => state.appReducer.activeSort
+    );
+
+    const sortTypes: Array<string> = ["популярности", "по цене", "по алфавиту"];
+
+    const sortPizza = (e: any) => {
+        if (e.target.innerText === sortTypes[0]) {
+            dispatch({ type: SORT_BY_POPULARITY });
+            dispatch({ type: SET_ACTIVE_SORT, payload: sortTypes[0] });
+            setShowSelectBody((prevValue: boolean) => !prevValue);
+        } else if (e.target.innerText === sortTypes[1]) {
+            dispatch({ type: SORT_BY_PRICE });
+            dispatch({ type: SET_ACTIVE_SORT, payload: sortTypes[1] });
+            setShowSelectBody((prevValue: boolean) => !prevValue);
+        } else if (e.target.innerText === sortTypes[2]) {
+            dispatch({ type: SORT_BY_ALPHABET });
+            dispatch({ type: SET_ACTIVE_SORT, payload: sortTypes[2] });
+            setShowSelectBody((prevValue: boolean) => !prevValue);
+        }
+    };
+
     return (
         <nav>
             <div className="nav__categories">
-                {categories.map((category) => {
+                {categories.map((category: string) => {
                     const className =
                         category === activeCategory
                             ? "nav__category nav__category_active"
@@ -27,7 +54,10 @@ const Nav = () => {
                             className={className}
                             key={category}
                             onClick={(e: any) =>
-                                setActiveCategory(e.target.innerText)
+                                dispatch({
+                                    type: SET_ACTIVE_CATEGORY,
+                                    payload: e.target.innerText,
+                                })
                             }
                         >
                             {category}
@@ -35,31 +65,33 @@ const Nav = () => {
                     );
                 })}
             </div>
-            <div className="nav__filter">
-                <img src="" alt="" />
-                Сортировка по:
-                <div className="select">
+            <div className="nav__sort">
+                Сортировка по: &nbsp;
+                <div className="custom-select">
                     <div
-                        className="select__header"
-                        onClick={(e: any) => setShowSelectBody(!showSelectBody)}
+                        className="custom-select__header"
+                        onClick={() =>
+                            setShowSelectBody(
+                                (prevValue: boolean) => !prevValue
+                            )
+                        }
                     >
-                        популярности
+                        {activeSort}
                     </div>
                     {showSelectBody && (
-                        <div className="select__body">
-                            {filters.map((filter) => {
+                        <div className="custom-select__body">
+                            {sortTypes.map((sortType: string) => {
                                 const className =
-                                    filter === activeFilter
-                                        ? "select__item select__item_active"
-                                        : "select__item";
+                                    sortType === activeSort
+                                        ? "custom-select__item custom-select__item_active"
+                                        : "custom-select__item";
                                 return (
                                     <div
                                         className={className}
-                                        onClick={(e: any) =>
-                                            setActiveFilter(e.target.innerText)
-                                        }
+                                        onClick={sortPizza}
+                                        key={sortType}
                                     >
-                                        {filter}
+                                        {sortType}
                                     </div>
                                 );
                             })}
