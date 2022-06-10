@@ -73,7 +73,7 @@ const PizzaBlock = (props: IPizzaBlockProps) => {
     return (
         <div className="main__pizza-block pizza-block">
             <img
-                src={img}
+                src={process.env.PUBLIC_URL + img}
                 alt={name}
                 className="pizza-block__img"
                 width={260}
