@@ -1,5 +1,5 @@
 import "./App.scss";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import BasketPage from "./pages/BasketPage";
 import { useEffect } from "react";
@@ -17,12 +17,12 @@ const App = () => {
     rootEl?.addEventListener("click", (e) => {});
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/basket" element={<BasketPage />} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 };
 
