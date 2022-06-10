@@ -1,9 +1,6 @@
 # Online store selling pizza.
 
----
-
 This is my pet-project for portfolio.
-
 In this project I mastered:
 
 -   react, redux, redux-thunk;
