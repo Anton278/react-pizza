@@ -4,17 +4,13 @@ header {
     align-items: center;
     justify-content: space-between;
 }
-
+/*  */
 .header__box {
     display: flex;
     align-items: center;
 }
-.header__img-wrapp {
+.header__logo {
     margin-right: 17px;
-}
-.header__img-wrapp > img {
-    width: 38px;
-    height: 38px;
 }
 .header__title {
     font-weight: 800;
@@ -28,7 +24,7 @@ header {
     color: #7b7b7b;
     line-height: 19px;
 }
-
+/*  */
 .header__basket {
     padding: 15px 23px;
     border-radius: 30px;
@@ -40,14 +36,12 @@ header {
     font-weight: 700;
     font-size: 0.8rem;
     line-height: 19px;
-}
-.header__basket:hover {
     cursor: pointer;
 }
 .header__total-amount {
     margin-left: 9px;
 }
-.header__row {
+.header__vrow {
     margin: 0px 13px;
 }
 .row {
