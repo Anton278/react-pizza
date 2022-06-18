@@ -20,7 +20,7 @@ const BasketItem = (props: IBasketItem) => {
             <div className="basket__item">
                 <div className="basket__img-wrapp">
                     <img
-                        src={img}
+                        src={process.env.PUBLIC_URL + img}
                         alt={name}
                         className="basket__img"
                         width={80}
