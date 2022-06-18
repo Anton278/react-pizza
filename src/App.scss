@@ -32,3 +32,9 @@ body {
         margin: 0;
     }
 }
+@media (max-width: 576px) {
+    html,
+    body {
+        font-size: 18px;
+    }
+}
