@@ -2,9 +2,6 @@ import "./HomePage.css";
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import PizzaBlock from "../../components/PizzaBlock";
-// import { BasketItemType } from "../../App";
-// import data from "../../assets/pizza.js";
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IPizza } from "../../assets/types";
