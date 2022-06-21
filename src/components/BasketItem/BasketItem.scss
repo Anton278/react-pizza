@@ -52,3 +52,22 @@
         }
     }
 }
+// 15, 30, 20, 20, 15
+// 30     30   20    10,    10
+@media screen and (max-width: 890px) {
+    .basket__img-wrapp {
+        flex-basis: 30%;
+    }
+    .basket__text {
+        flex-basis: 30%;
+    }
+    .basket__amount-wrapp {
+        flex-basis: 20%;
+    }
+    .basket__price {
+        flex-basis: 10%;
+    }
+    .basket__btn-wrapp {
+        flex-basis: 10%;
+    }
+}

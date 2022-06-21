@@ -6,14 +6,23 @@ import {
     DECREASE_ITEM_AMOUNT_IN_BASKET,
     DELETE_ITEM,
 } from "../../actions";
+import removeDisabled from "./remove-disabled.svg";
 import remove from "./remove.svg";
 import add from "./add.svg";
 import deleteImg from "./delete.svg";
+import { useEffect, useState } from "react";
 
 const BasketItem = (props: IBasketItem) => {
     const { name, img, doughType, doughSize, amount, price, id } = props;
     const dispatch = useDispatch();
-
+    const [isRemoveButtonActive, setIsRemoveButtonActive] = useState(() =>
+        amount === 1 ? false : true
+    );
+    useEffect(() => {
+        amount === 1
+            ? setIsRemoveButtonActive(false)
+            : setIsRemoveButtonActive(true);
+    }, [amount]);
     return (
         <>
             <div className="row basket__row"></div>
@@ -34,22 +43,32 @@ const BasketItem = (props: IBasketItem) => {
                     </div>
                 </div>
                 <div className="basket__amount-wrapp">
-                    <img
-                        src={remove}
-                        alt="remove-button"
-                        width={32}
-                        height={32}
-                        onClick={() =>
-                            dispatch({
-                                type: DECREASE_ITEM_AMOUNT_IN_BASKET,
-                                payload: {
-                                    id: id,
-                                    doughType: doughType,
-                                    doughSize: doughSize,
-                                },
-                            })
-                        }
-                    />
+                    {(isRemoveButtonActive && (
+                        <img
+                            src={remove}
+                            alt="remove-button"
+                            width={32}
+                            height={32}
+                            onClick={() =>
+                                dispatch({
+                                    type: DECREASE_ITEM_AMOUNT_IN_BASKET,
+                                    payload: {
+                                        id: id,
+                                        doughType: doughType,
+                                        doughSize: doughSize,
+                                    },
+                                })
+                            }
+                        />
+                    )) || (
+                        <img
+                            src={removeDisabled}
+                            alt="remove-disabled-button"
+                            width={32}
+                            height={32}
+                        />
+                    )}
+
                     <div className="basket__amount">{amount}</div>
                     <img
                         src={add}
