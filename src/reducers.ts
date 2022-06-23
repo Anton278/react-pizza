@@ -15,59 +15,65 @@ import {
 } from "./actions";
 import { IBasketItem, IPizza } from "./assets/types";
 
-const categoriesDefaultState = {
-    activeCategory: "",
-    categories: [],
-};
-interface ICategoriesDefaultState {
-    activeCategory: string;
+interface IDefaultPizzaReducerState {
+    pizza: Array<IPizza>;
     categories: Array<string>;
+    activeCategory: string;
+    activeSort: "популярности" | "цене" | "алфавиту";
 }
-
-export const categoriesReducer = (
-    state: ICategoriesDefaultState = categoriesDefaultState,
-    action: any
-) => {
+const defaultPizzaReducerState: IDefaultPizzaReducerState = {
+    pizza: [],
+    categories: [],
+    activeCategory: "Все",
+    activeSort: "популярности",
+};
+export const pizzaReducer = (state = defaultPizzaReducerState, action: any) => {
     switch (action.type) {
         case SET_CATEGORIES:
-            return {
-                activeCategory: action.payload[0],
-                categories: [...action.payload],
-            };
-        default:
-            return state;
-    }
-};
-
-export const pizzaReducer = (state: Array<IPizza> = [], action: any) => {
-    switch (action.type) {
+            return { ...state, categories: action.payload };
         case SET_PIZZA:
-            return [...action.payload];
+            return { ...state, pizza: action.payload };
         case SORT_BY_PRICE:
-            return state
-                .slice()
-                .sort(
-                    (pizza1: IPizza, pizza2: IPizza) =>
-                        pizza1.price.thinDough["26cm"] -
-                        pizza2.price.thinDough["26cm"]
-                );
+            return {
+                ...state,
+                pizza: state.pizza
+                    .slice()
+                    .sort(
+                        (pizza1: IPizza, pizza2: IPizza) =>
+                            pizza1.price.thinDough["26cm"] -
+                            pizza2.price.thinDough["26cm"]
+                    ),
+                activeSort: "цене",
+            };
         case SORT_BY_ALPHABET:
-            return state.slice().sort((pizza1: IPizza, pizza2: IPizza) => {
-                if (pizza1.name > pizza2.name) {
-                    return 1;
-                }
-                if (pizza1.name < pizza2.name) {
-                    return -1;
-                }
-                return 0;
-            });
+            return {
+                ...state,
+                pizza: state.pizza
+                    .slice()
+                    .sort((pizza1: IPizza, pizza2: IPizza) => {
+                        if (pizza1.name > pizza2.name) {
+                            return 1;
+                        }
+                        if (pizza1.name < pizza2.name) {
+                            return -1;
+                        }
+                        return 0;
+                    }),
+                activeSort: "алфавиту",
+            };
         case SORT_BY_POPULARITY:
-            return state
-                .slice()
-                .sort(
-                    (pizza1: IPizza, pizza2: IPizza) =>
-                        pizza2.popularity - pizza1.popularity
-                );
+            return {
+                ...state,
+                pizza: state.pizza
+                    .slice()
+                    .sort(
+                        (pizza1: IPizza, pizza2: IPizza) =>
+                            pizza2.popularity - pizza1.popularity
+                    ),
+                activeSort: "популярности",
+            };
+        case SET_ACTIVE_CATEGORY:
+            return { ...state, activeCategory: action.payload };
         default:
             return state;
     }
@@ -76,18 +82,12 @@ export const pizzaReducer = (state: Array<IPizza> = [], action: any) => {
 export const appReducer = (
     state = {
         isLoading: false,
-        activeCategory: "Все",
-        activeSort: "популярности",
     },
     action: any
 ) => {
     switch (action.type) {
         case SET_IS_LOADING:
             return { ...state, isLoading: action.payload };
-        case SET_ACTIVE_CATEGORY:
-            return { ...state, activeCategory: action.payload };
-        case SET_ACTIVE_SORT:
-            return { ...state, activeSort: action.payload };
         default:
             return state;
     }
