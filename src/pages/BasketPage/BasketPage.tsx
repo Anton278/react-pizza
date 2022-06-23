@@ -1,4 +1,3 @@
-import "./BasketPage.scss";
 import Header from "../../components/Header";
 import EmptyBasket from "../../components/EmptyBasket";
 import Basket from "../../components/Basket";
