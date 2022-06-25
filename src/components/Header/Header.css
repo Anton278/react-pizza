@@ -4,12 +4,11 @@ header {
     align-items: center;
     justify-content: space-between;
 }
-/*  */
-.header__box {
+.header__col {
     display: flex;
     align-items: center;
 }
-.header__logo {
+.header__icon {
     margin-right: 17px;
 }
 .header__title {
@@ -18,14 +17,17 @@ header {
     line-height: 29px;
     letter-spacing: 0.01rem;
     color: #181818;
+    margin: 0;
 }
 .header__subtitle {
     font-size: 0.8rem;
     color: #7b7b7b;
     line-height: 19px;
+    margin: 0;
+    font-weight: normal;
 }
 /*  */
-.header__basket {
+.header__btn {
     padding: 15px 23px;
     border-radius: 30px;
     background-color: #fe5f1e;
@@ -37,11 +39,17 @@ header {
     font-size: 0.8rem;
     line-height: 19px;
     cursor: pointer;
+    border: none;
 }
 .header__total-amount {
-    margin-left: 9px;
+    display: flex;
+    align-items: center;
 }
 .header__vrow {
+    display: inline-block;
+    width: 1px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.25);
     margin: 0px 13px;
 }
 .row {
@@ -60,7 +68,7 @@ header {
         align-items: flex-start;
         padding: 40px 30px;
     }
-    .header__box {
+    .header__col {
         margin-bottom: 20px;
     }
 }
