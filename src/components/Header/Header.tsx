@@ -1,6 +1,5 @@
 import "./Header.css";
 import icon from "./icon.svg";
-import vrow from "./vrow.svg";
 import basketImg from "./basket.svg";
 
 import { useNavigate } from "react-router-dom";
@@ -10,6 +9,10 @@ import { IBasketItem } from "../../assets/types";
 type HeaderProps = {
     showBasket: boolean;
 };
+interface ITotals {
+    price: number;
+    amount: number;
+}
 
 const Header = ({ showBasket }: HeaderProps) => {
     const navigate = useNavigate();
@@ -17,64 +20,61 @@ const Header = ({ showBasket }: HeaderProps) => {
         (state: any) => state.basketReducer
     );
 
-    const getTotalPrice = () => {
+    const getTotals = (): ITotals => {
         let totalPrice = 0;
+        let totalAmount = 0;
+
         basket.forEach((pizza: IBasketItem) => {
             totalPrice += pizza.price * pizza.amount;
-        });
-        return totalPrice;
-    };
-    const getTotalAmount = () => {
-        let totalAmount = 0;
-        basket.forEach((pizza: IBasketItem) => {
             totalAmount += pizza.amount;
         });
-        return totalAmount;
+
+        return {
+            price: totalPrice,
+            amount: totalAmount,
+        };
     };
+
+    const totals: ITotals = getTotals();
 
     return (
         <>
             <header>
-                <div className="header__box">
+                <div className="header__col">
                     <img
                         src={icon}
-                        alt="pizza-icon"
+                        alt="icon"
                         width={38}
                         height={38}
-                        className="header__logo"
+                        className="header__icon"
                     />
-                    <div className="header__text">
-                        <div className="header__title">REACT PIZZA</div>
-                        <div className="header__subtitle">
+                    <div className="header__title-wrapp">
+                        <h3 className="header__title">REACT PIZZA</h3>
+                        <h5 className="header__subtitle">
                             самая вкусная пицца во вселенной
-                        </div>
+                        </h5>
                     </div>
                 </div>
                 {showBasket && (
-                    <div
-                        className="header__basket"
+                    <button
+                        className="header__btn"
                         onClick={() => navigate("/basket")}
                     >
-                        <div className="header__total-price">
-                            {getTotalPrice()} грн
-                        </div>
-                        <img
-                            src={vrow}
-                            alt="vertical-row"
-                            width={1}
-                            height={25}
-                            className="header__vrow"
-                        />
-                        <img
-                            src={basketImg}
-                            alt="basket-icon"
-                            width={16}
-                            height={16}
-                        />
-                        <div className="header__total-amount">
-                            {getTotalAmount()}
-                        </div>
-                    </div>
+                        <span className="header__total-price">
+                            {totals.price} грн
+                        </span>
+                        <span className="header__vrow"></span>
+                        <span className="header__total-amount">
+                            <img
+                                src={basketImg}
+                                alt="basket-icon"
+                                width={16}
+                                height={16}
+                            />
+                            &nbsp;
+                            {totals.amount}
+                        </span>
+                    </button>
                 )}
             </header>
             <div className="row" />
