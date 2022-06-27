@@ -1,24 +1,25 @@
 import "./HomePage.css";
 import Header from "../../components/Header";
-import Nav from "../../components/Nav";
+import Nav from "../../components/FiltersAndSorting";
 import PizzaBlock from "../../components/PizzaBlock";
 import { useSelector } from "react-redux";
 import { IPizza } from "../../assets/types";
+import { IDefaultStore } from "../../reducerAndActions";
 
 const HomePage = () => {
     const pizza: Array<IPizza> = useSelector(
-        (state: any) => state.pizzaReducer
+        (state: IDefaultStore) => state.pizza
     );
-    const isLoading: boolean = useSelector(
-        (state: any) => state.appReducer.isLoading
+    const isLoaded: boolean = useSelector(
+        (state: IDefaultStore) => state.isLoaded
     );
     const activeCategory: string = useSelector(
-        (state: any) => state.appReducer.activeCategory
+        (state: IDefaultStore) => state.activeCategory
     );
 
     return (
         <div className="wrapp">
-            {!isLoading && (
+            {isLoaded && (
                 <>
                     <Header showBasket />
                     <Nav />
