@@ -5,6 +5,7 @@ import basketImg from "./basket.svg";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IBasketItem } from "../../assets/types";
+import { IDefaultStore } from "../../reducerAndActions";
 
 type HeaderProps = {
     showBasket: boolean;
@@ -17,7 +18,7 @@ interface ITotals {
 const Header = ({ showBasket }: HeaderProps) => {
     const navigate = useNavigate();
     const basket: Array<IBasketItem> = useSelector(
-        (state: any) => state.basketReducer
+        (state: IDefaultStore) => state.basket
     );
 
     const getTotals = (): ITotals => {
