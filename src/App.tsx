@@ -13,9 +13,6 @@ const App = () => {
         dispatch(getData());
     }, []);
 
-    const rootEl = document.getElementById("root");
-    rootEl?.addEventListener("click", (e) => {});
-
     return (
         <HashRouter>
             <Routes>
