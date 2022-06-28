@@ -67,6 +67,7 @@
             }
             &:last-child {
                 & > .basket__btn {
+                    padding: 0;
                     border-radius: 30px;
                     width: 211px;
                     height: 55px;
@@ -105,5 +106,29 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: 600px) {
+    .basket__col {
+        flex-direction: column;
+    }
+    .basket__total-amount-wrapp {
+        margin-bottom: 40px !important;
+    }
+    .basket__footer {
+        .basket__btn:first-of-type {
+            margin-bottom: 40px;
+        }
+    }
+}
+@media (max-width: 470px) {
+    .basket__title {
+        display: none;
+    }
+}
+@media (max-width: 335px) {
+    .basket__btn-text {
+        display: none;
     }
 }

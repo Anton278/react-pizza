@@ -60,7 +60,7 @@ const Basket = () => {
                 </div>
                 <button className="basket__btn" onClick={clearBasket}>
                     <img src={trash} alt="trash" width={20} height={20} />
-                    Очистить корзину
+                    <span className="basket__btn-text">Очистить корзину</span>
                 </button>
             </div>
             {basket.map((pizza: IBasketItem) => (
