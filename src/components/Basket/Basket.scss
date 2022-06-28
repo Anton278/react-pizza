@@ -1,6 +1,7 @@
 .basket {
     max-width: 830px;
     margin: 94px auto 131px auto;
+    padding: 0 50px 0 50px;
     & > .basket__header {
         display: flex;
         align-items: center;
@@ -10,14 +11,16 @@
             display: flex;
             align-items: center;
             & > .basket__title {
-                margin-left: 18px;
-                font-weight: 700;
+                margin: 0 0 0 18px;
                 font-size: 1.6rem;
                 line-height: 39px;
                 letter-spacing: 0.01rem;
             }
         }
         & > .basket__btn {
+            padding: 0;
+            border: none;
+            background-color: transparent;
             font-size: 0.8rem;
             line-height: 19px;
             color: #b6b6b6;
@@ -39,18 +42,24 @@
             align-items: center;
             justify-content: space-between;
             &:first-child {
+                margin-bottom: 40px;
+            }
+            & > .basket__total-amount-wrapp {
+                margin: 0;
                 font-weight: 400;
                 font-size: 1.1rem;
                 line-height: 27px;
                 letter-spacing: 0.01em;
-                margin-bottom: 40px;
-            }
-            & > .basket__total-amount-wrapp {
                 & > .basket__total-amount {
                     font-weight: 700;
                 }
             }
             & > .basket__total-price-wrapp {
+                margin: 0;
+                font-weight: 400;
+                font-size: 1.1rem;
+                line-height: 27px;
+                letter-spacing: 0.01em;
                 & > .basket__total-price {
                     font-weight: 700;
                     color: #fe5f1e;
