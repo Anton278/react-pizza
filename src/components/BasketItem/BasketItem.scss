@@ -1,73 +1,103 @@
-.basket {
-    & > .basket__item {
+.basket-item {
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    align-items: center;
+    .basket-item__title-wrapp {
         display: flex;
         align-items: center;
-        & > .basket__img-wrapp {
-            flex-basis: 15%;
+        .basket-item__img {
+            margin-right: 20px;
         }
-        & > .basket__text {
-            flex-basis: 30%;
-            & > .basket__name {
-                font-weight: 700;
-                font-size: 1.1rem;
-                line-height: 27px;
-                letter-spacing: 0.01em;
-            }
-            & > .basket__options {
-                font-weight: 400;
-                font-size: 0.9rem;
-                line-height: 22px;
-                letter-spacing: 0.01em;
-                color: #8d8d8d;
-            }
-        }
-        .basket__amount-wrapp {
-            display: flex;
-            align-items: center;
-            flex-basis: 20%;
-            & > .basket__amount {
-                font-weight: 700;
-                font-size: 1.1rem;
-                line-height: 27px;
-                letter-spacing: 0.01em;
-                margin: 0px 12px;
-            }
-            & > img {
-                cursor: pointer;
-            }
-        }
-        & > .basket__price {
-            flex-basis: 20%;
-            font-weight: 700;
+        .basket-item__title {
+            margin: 0;
             font-size: 1.1rem;
             line-height: 27px;
             letter-spacing: 0.01em;
         }
-        & > .basket__btn-wrapp {
-            flex-basis: 15%;
-            text-align: right;
-            & > img {
-                cursor: pointer;
-            }
+        .basket-item__subtitle {
+            margin: 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+            line-height: 22px;
+            letter-spacing: 0.01em;
+            color: #8d8d8d;
         }
     }
+    .basket-item__amount-wrapp {
+        display: flex;
+        align-items: center;
+        .basket-item__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #fe5f1e;
+            padding: 0;
+            background-color: transparent;
+            cursor: pointer;
+            .basket-item__minus {
+                display: inline-block;
+                width: 10px;
+                height: 2px;
+                background-color: #fe5f1e;
+            }
+            .basket-item__plus {
+                display: inline-block;
+                width: 10px;
+                height: 2px;
+                background-color: #fe5f1e;
+                position: relative;
+            }
+            .basket-item__plus::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 2px;
+                height: 10px;
+                background-color: #fe5f1e;
+            }
+        }
+        .basket-item__amount {
+            font-size: 1.1rem;
+            line-height: 27px;
+            letter-spacing: 0.01em;
+            margin: 0px 12px;
+        }
+    }
+    .basket-item__price {
+        text-align: right;
+        margin: 0;
+        font-size: 1.1rem;
+        line-height: 27px;
+        letter-spacing: 0.01em;
+    }
 }
-// 15, 30, 20, 20, 15
-// 30     30   20    10,    10
-@media screen and (max-width: 890px) {
-    .basket__img-wrapp {
-        flex-basis: 30%;
+
+@media (max-width: 665px) {
+    .basket-item {
+        grid-template-columns: 80% 20%;
+        grid-template-rows: 1fr 1fr;
     }
-    .basket__text {
-        flex-basis: 30%;
+    .basket-item__amount-wrapp {
+        justify-self: end;
     }
-    .basket__amount-wrapp {
-        flex-basis: 20%;
+    .basket-item__price {
+        grid-column: 2/3;
+        grid-row: 2/3;
     }
-    .basket__price {
-        flex-basis: 10%;
+}
+@media (max-width: 530px) {
+    .basket-item {
+        grid-template-columns: 70% 30%;
+        grid-template-rows: repeat(2, 1fr);
     }
-    .basket__btn-wrapp {
-        flex-basis: 10%;
+    .basket-item__amount-wrapp {
+        justify-self: start;
+        grid-column: 1/2;
+        grid-row: 2/3;
     }
 }

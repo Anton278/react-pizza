@@ -2,82 +2,39 @@ import "./BasketItem.scss";
 import { IBasketItem } from "../../assets/types";
 import { useDispatch } from "react-redux";
 import {
-    ADD_ITEM_AMOUNT_IN_BASKET,
-    DECREASE_ITEM_AMOUNT_IN_BASKET,
-    DELETE_ITEM,
-} from "../../actions";
-import removeDisabled from "./remove-disabled.svg";
-import remove from "./remove.svg";
-import add from "./add.svg";
-import deleteImg from "./delete.svg";
-import { useEffect, useState } from "react";
+    ADD_PIZZA_AMOUNT_IN_BASKET,
+    REMOVE_PIZZA_AMOUNT_IN_BASKET,
+} from "../../reducerAndActions";
 
 const BasketItem = (props: IBasketItem) => {
     const { name, img, doughType, doughSize, amount, price, id } = props;
     const dispatch = useDispatch();
-    const [isRemoveButtonActive, setIsRemoveButtonActive] = useState(() =>
-        amount === 1 ? false : true
-    );
-    useEffect(() => {
-        amount === 1
-            ? setIsRemoveButtonActive(false)
-            : setIsRemoveButtonActive(true);
-    }, [amount]);
+
     return (
         <>
             <div className="row basket__row"></div>
-            <div className="basket__item">
-                <div className="basket__img-wrapp">
+            <div className="basket-item">
+                <div className="basket-item__title-wrapp">
                     <img
                         src={process.env.PUBLIC_URL + img}
                         alt={name}
-                        className="basket__img"
+                        className="basket-item__img"
                         width={80}
                         height={80}
                     />
-                </div>
-                <div className="basket__text">
-                    <div className="basket__name">{name}</div>
-                    <div className="basket__options">
-                        {doughType} тесто, {doughSize}
+                    <div className="basket-item__text-wrapp">
+                        <h3 className="basket-item__title">{name}</h3>
+                        <h5 className="basket-item__subtitle">
+                            {doughType} тесто, {doughSize}
+                        </h5>
                     </div>
                 </div>
-                <div className="basket__amount-wrapp">
-                    {(isRemoveButtonActive && (
-                        <img
-                            src={remove}
-                            alt="remove-button"
-                            width={32}
-                            height={32}
-                            onClick={() =>
-                                dispatch({
-                                    type: DECREASE_ITEM_AMOUNT_IN_BASKET,
-                                    payload: {
-                                        id: id,
-                                        doughType: doughType,
-                                        doughSize: doughSize,
-                                    },
-                                })
-                            }
-                        />
-                    )) || (
-                        <img
-                            src={removeDisabled}
-                            alt="remove-disabled-button"
-                            width={32}
-                            height={32}
-                        />
-                    )}
-
-                    <div className="basket__amount">{amount}</div>
-                    <img
-                        src={add}
-                        alt="add-button"
-                        width={32}
-                        height={32}
+                <div className="basket-item__amount-wrapp">
+                    <button
+                        className="basket-item__btn"
                         onClick={() =>
                             dispatch({
-                                type: ADD_ITEM_AMOUNT_IN_BASKET,
+                                type: REMOVE_PIZZA_AMOUNT_IN_BASKET,
                                 payload: {
                                     id: id,
                                     doughType: doughType,
@@ -85,18 +42,15 @@ const BasketItem = (props: IBasketItem) => {
                                 },
                             })
                         }
-                    />
-                </div>
-                <div className="basket__price">{amount * price} ₴</div>
-                <div className="basket__btn-wrapp">
-                    <img
-                        src={deleteImg}
-                        alt="delete-button"
-                        width={32}
-                        height={32}
+                    >
+                        <span className="basket-item__minus"></span>
+                    </button>
+                    <h3 className="basket-item__amount">{amount}</h3>
+                    <button
+                        className="basket-item__btn"
                         onClick={() =>
                             dispatch({
-                                type: DELETE_ITEM,
+                                type: ADD_PIZZA_AMOUNT_IN_BASKET,
                                 payload: {
                                     id: id,
                                     doughType: doughType,
@@ -104,8 +58,11 @@ const BasketItem = (props: IBasketItem) => {
                                 },
                             })
                         }
-                    />
+                    >
+                        <span className="basket-item__plus"></span>
+                    </button>
                 </div>
+                <h3 className="basket-item__price">{amount * price} ₴</h3>
             </div>
         </>
     );
