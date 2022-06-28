@@ -95,6 +95,10 @@
         grid-template-columns: 70% 30%;
         grid-template-rows: repeat(2, 1fr);
     }
+    .basket-item__title-wrapp {
+        grid-column: 1/3;
+        grid-row: 1/2;
+    }
     .basket-item__amount-wrapp {
         justify-self: start;
         grid-column: 1/2;
