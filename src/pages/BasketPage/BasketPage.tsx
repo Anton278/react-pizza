@@ -3,10 +3,11 @@ import EmptyBasket from "../../components/EmptyBasket";
 import Basket from "../../components/Basket";
 import { useSelector } from "react-redux";
 import { IBasketItem } from "../../assets/types";
+import { IDefaultStore } from "../../reducerAndActions";
 
 const BasketPage = () => {
     const basket: Array<IBasketItem> = useSelector(
-        (state: any) => state.basketReducer
+        (state: IDefaultStore) => state.basket
     );
 
     if (!basket.length) {
