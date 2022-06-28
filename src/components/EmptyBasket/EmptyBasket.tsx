@@ -44,9 +44,14 @@ const EmptyBasket = () => {
                 заказать пиццу, перейди на главную страницу.
             </div>
             <div className="empty-basket__img-wrapp">
-                <img src={icon} alt="icon" className="empty-basket__img"></img>
+                <img
+                    src={icon}
+                    alt="icon"
+                    className="empty-basket__img"
+                    width={300}
+                    height={255}
+                ></img>
             </div>
-
             <button className="empty-basket__btn" onClick={() => navigate("/")}>
                 Вернуться назад
             </button>
