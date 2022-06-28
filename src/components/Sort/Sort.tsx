@@ -10,7 +10,7 @@ import "./Sort.scss";
 
 const Sort = () => {
     const dispatch = useDispatch();
-    const [showBody, setShowBody] = useState<boolean>(true);
+    const [showBody, setShowBody] = useState<boolean>(false);
 
     const activeSort: string = useSelector(
         (state: IDefaultStore) => state.activeSort
