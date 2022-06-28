@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-pizza/static/css/main.83c760fd.css",
-    "main.js": "/react-pizza/static/js/main.352ef824.js",
+    "main.css": "/react-pizza/static/css/main.a2124c5b.css",
+    "main.js": "/react-pizza/static/js/main.9e9dec1f.js",
     "static/media/proxima-nova.svg": "/react-pizza/static/media/proxima-nova.09c5444780f65d75b200.svg",
     "static/media/proxima-nova.eot": "/react-pizza/static/media/proxima-nova.cae47eb370da41febfbb.eot",
     "static/media/proxima-nova.ttf": "/react-pizza/static/media/proxima-nova.67cc562a534a518eb813.ttf",
@@ -9,18 +9,15 @@
     "static/media/icon.svg": "/react-pizza/static/media/icon.31717c84984c115a21ac861c5889e50e.svg",
     "static/media/proxima-nova.woff2": "/react-pizza/static/media/proxima-nova.ce95d1a950732f7d2e0b.woff2",
     "static/media/icon.png": "/react-pizza/static/media/icon.e70dcf4e3fd40224b817.png",
-    "static/media/basket.svg": "/react-pizza/static/media/basket.dcd5168086a25b3307ba9f5524ca6e70.svg",
+    "static/media/basket.svg": "/react-pizza/static/media/basket.d05720f2b474db2145233cd2ce1d4e91.svg",
     "static/media/trash.svg": "/react-pizza/static/media/trash.ceafcffb34cece0b1462c3505b170d88.svg",
     "index.html": "/react-pizza/index.html",
-    "static/media/delete.svg": "/react-pizza/static/media/delete.2d1f53ca5f3e1ba35446c3613993903b.svg",
-    "static/media/add.svg": "/react-pizza/static/media/add.deedb499d2be6beb9d7fb585e3fc39eb.svg",
-    "static/media/remove.svg": "/react-pizza/static/media/remove.6c093cd41848df4aa3475a7610eb6605.svg",
     "static/media/arrow-left.svg": "/react-pizza/static/media/arrow-left.fc29ec73901b6f8218c91a0d69592416.svg",
-    "main.83c760fd.css.map": "/react-pizza/static/css/main.83c760fd.css.map",
-    "main.352ef824.js.map": "/react-pizza/static/js/main.352ef824.js.map"
+    "main.a2124c5b.css.map": "/react-pizza/static/css/main.a2124c5b.css.map",
+    "main.9e9dec1f.js.map": "/react-pizza/static/js/main.9e9dec1f.js.map"
   },
   "entrypoints": [
-    "static/css/main.83c760fd.css",
-    "static/js/main.352ef824.js"
+    "static/css/main.a2124c5b.css",
+    "static/js/main.9e9dec1f.js"
   ]
 }
