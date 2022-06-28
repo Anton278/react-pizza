@@ -41,7 +41,7 @@ const addPizzaAmountInBasket = (
         if (
             pizza.id === payload.id &&
             pizza.doughSize === payload.doughSize &&
-            pizza.doughType === pizza.doughType
+            pizza.doughType === payload.doughType
         ) {
             return { ...pizza, amount: pizza.amount + 1 };
         } else {
