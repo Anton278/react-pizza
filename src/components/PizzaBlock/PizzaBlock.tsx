@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "./PizzaBlock.css";
+import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_PIZZA_TO_BASKET, IDefaultStore } from "../../reducerAndActions";
 import { IBasketItem } from "../../assets/types";
@@ -37,7 +37,7 @@ const PizzaBlock = (props: IPizzaBlockProps) => {
         (state: IDefaultStore) => state.basket
     );
 
-    const calcPrice = () => {
+    const currentPrice: number | void = useMemo(() => {
         if (activeDoughType === "тонкое") {
             switch (activeDoughSize) {
                 case "26 см.":
@@ -57,8 +57,17 @@ const PizzaBlock = (props: IPizzaBlockProps) => {
                     return price.traditionalDough["40cm"];
             }
         }
-    };
-    const getAmount = () => {};
+    }, [activeDoughType, activeDoughSize]);
+
+    const amount: number = useMemo(() => {
+        let amount: number = 0;
+        basket.forEach((pizza: IBasketItem) => {
+            if (pizza.id === id) {
+                amount += pizza.amount;
+            }
+        });
+        return amount;
+    }, [basket]);
 
     return (
         <div className="card">
@@ -127,7 +136,7 @@ const PizzaBlock = (props: IPizzaBlockProps) => {
                 </ul>
             </div>
             <div className="card__footer">
-                <h3 className="card__price">от {calcPrice()} ₴</h3>
+                <h3 className="card__price">от {currentPrice} ₴</h3>
                 <button
                     className="card__btn"
                     onClick={() =>
@@ -140,16 +149,16 @@ const PizzaBlock = (props: IPizzaBlockProps) => {
                                 doughSize: activeDoughSize,
                                 id: id,
                                 amount: 1,
-                                price: calcPrice(),
+                                price: currentPrice,
                             },
                         })
                     }
                 >
                     <span className="card__plus" />
                     Добавить
-                    {/* {getAmount() === 0 ? null : (
-                        <h6 className="card__amount">{getAmount()}</h6>
-                    )} */}
+                    {amount === 0 ? null : (
+                        <h6 className="card__amount">{amount}</h6>
+                    )}
                 </button>
             </div>
         </div>
