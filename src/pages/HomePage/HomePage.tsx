@@ -23,20 +23,18 @@ const HomePage = () => {
                 <>
                     <Header showBasket />
                     <Nav />
-                    <main>
-                        <div className="pizza-wrapp">
-                            {pizza
-                                .filter((pizza: IPizza) =>
-                                    pizza.category.some(
-                                        (category: string) =>
-                                            category === activeCategory
-                                    )
+                    <div className="pizza-wrapp">
+                        {pizza
+                            .filter((pizza: IPizza) =>
+                                pizza.category.some(
+                                    (category: string) =>
+                                        category === activeCategory
                                 )
-                                .map((pizza: IPizza) => (
-                                    <PizzaBlock {...pizza} key={pizza.id} />
-                                ))}
-                        </div>
-                    </main>
+                            )
+                            .map((pizza: IPizza) => (
+                                <PizzaBlock {...pizza} key={pizza.id} />
+                            ))}
+                    </div>
                 </>
             )}
         </div>
